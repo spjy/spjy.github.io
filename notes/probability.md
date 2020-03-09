@@ -176,7 +176,7 @@ Next, from the remaining pool of $n - n_1$, we choose however many objects we wa
 
 We repeat this until the group $r$.
 
-# Random Variables
+# Discrete Random Variables
 
 A random variable $X$ is a function that assigns a real number $X(w)$ to each outcome $w \in \Omega$.
 
@@ -184,24 +184,54 @@ A random variable $X$ is a function that assigns a real number $X(w)$ to each ou
 
 If $S_X$ is a discrete set, $X$ is a discrete random variable.
 
-We can assign a probability to each element $x \in S_X$, and this assignment is called the probability mass function (PMF). In essence, we are assigning some weight to how probable an element $x$ occurs.
+We can assign a probability to each element $x \in S_X$, and this assignment is called the probability mass function (PMF). In essence, we are assigning some weight to how probable an element $x$ occurs. We denote the PMF by:
 
-Given a PMF $\bold{P}(X = x)$, it has the properties:
+$$\bold{P}(X = x)$$
+
+Given a PMF, it has the properties:
 - $\bold{P}(X = x) \geq 0$
 - $\displaystyle \sum_x \bold{P}(X = x) = 1$
 
-### Geometric Probability Mass Function / Distribution
+### Geometric Distribution
 
-The geometric probability mass function describes the situation in which $k$ independent trials are required before the event occurs with probability $p$.
+The geometric probability mass function describes the situation in which $n$ independent trials are required before the event occurs with probability $p$.
 
-$$P(K = k) = (1-p)^{k-1}p$$
-$$\sum_{k=1}^\infty \bold{P}(K=k) = \sum_{k=1}^\infty (1-p)^{k-1} p$$
+$$P(X = n) = (1-p)^{n-1}p$$
+$$\sum_{k=1}^\infty \bold{P}(X = k) = \sum_{k=1}^\infty (1-p)^{k-1} p$$
+
+In other words, $k-1$ trials occur before the event occurs.
+
+### Binomial Distribution
+
+The binomial probability mass function describes the situation in which the $n$ independent trials occur with $k$ successes with probability $p$ and $n - k$ fails with probability $1-p$.
+
+$$\bold P(X = k) = {n \choose k} p^k (1-p)^k$$
+
+### Bernoulli Distribution
+
+The Bernoulli distribution describes the situation in which the probability mass function consists of a binary set of outcomes, $S_X = \{ 0, 1 \}$. It is a special case of the binomial distribution, where $n = 1$.
+
+$$\bold P (X = x) = \begin{cases}p & x = 1\\1-p & x = 0\end{cases}$$
+
+### Poisson Distribution
+
+The Poisson distribution is a discrete distribution that is useful for counting the average number of occurrences $\lambda$ of an event over some time $t$.
+
+$$\bold P(X = x) = \frac{\lambda^k e^{-\lambda}}{k!} \quad k = 0, 1, 2, \dots$$
+
+#### Expected Value
+
+$$\bold E[X] = \lambda$$
+
+#### Variance
+
+$$\text{Var} (X) = \lambda$$
 
 ## Cumulative Distribution Function (CDF)
 
 The cumulative distribution function describes the situation in which the random value $X$ will take a value less than or equal to $x$.
 
-$$F_X(x) = \bold{P}(X \leq x)$$
+$$F_X(x) = \bold{P}(X \leq x) = \sum_{k = - \infty}^x P(X = k)$$
 
 ## Probability Generating Function (PGF)
 
@@ -245,3 +275,74 @@ $$\text{Var}[X] = \bold{E}[X^2] - \bold{E}[X]^2 = \frac{\text{d}^2G_X}{\text{d}z
 The standard deviation describes the spread of values.
 
 $\text{stdiv} = \sqrt{\text{var}[X]}$
+
+## Joint Probability Mass Function (PMF)
+
+The joint PMF is denoted by
+
+$$\bold P(\{ X = x, Y = y \})$$
+
+It represents the probability of both $X$ and $Y$ occurring.
+
+### Marginal PMF
+
+The marginal PMF allows us to obtain individual random variable values from a vector random variable.
+
+$$\bold P(X = x) = \sum_y \bold P({X = x, Y = y}) $$
+$$\bold P(Y = y) = \sum_x \bold P({X = x, Y = y}) $$
+
+## Conditioning a Random Variable
+
+### On an event
+
+# Continuous Random Variables
+
+A continuous random variable infinitely many values, as opposed to discrete random variables where only countable values are considered.
+
+## Probability Density Function (PDF)
+
+A PDF is analogous to a [PMF](#probability-mass-function-pmf). It defines the distribution of probabilities over a range of values.
+
+$$f_X(x) = \frac{\text dF_X(x)}{\text dx}$$
+
+A function $f_X(x)$ is a PDF if it satisfies:
+
+- $f_X(x) \geq 0 \forall x$
+- $\displaystyle \int_{-\infty}^\infty f_X(x) \text dx = 1$
+- $\forall$ numbers $a$, $b$ then $\displaystyle \bold P [a \leq X \leq b] = \int_a^b f_X(x) \text dx$
+
+## Cumulative Distribution Function (CDF)
+
+The CDF of a random variable describes the distribution and is defined as:
+
+$$F_X (x) = \bold P(X \leq x)$$
+
+In continuous time, for an infinitesimally large step $\Delta x$, the probability is found to be zero.
+
+$$\bold P [2 \leq x \leq 2 + \Delta x] = \int_2^{2+\Delta x} f_X(x) \text dx \approx f_X(2) \Delta X \approx 0$$
+
+In a semi-closed interval $(a, b]$ for $a< b$,
+
+$$P(a < X \leq B) = F_X(b) - F_X(a)$$
+
+### Uniformly Distributed Random Variable
+
+A uniformly distributed random variable has a constant probability density function.
+
+#### Probability Density Function
+
+$$f_x(x) = \begin{cases} \frac{1}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
+
+#### Cumulative Distribution Function
+
+$$F_X(x) = \int_{-\infty}^\infty f_X(x) \text dx = \begin{cases} 0 & x < a \\ \frac{x - a}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
+
+### Exponentially Distributed Random Variable
+
+An exponentially distributed random variable has an exponentially growing probability density function.
+
+$$f_X (x) = \begin{cases} \lambda e^{-\lambda x} & x \geq 0 \\ 0 & \text{otherwise} \end{cases} = \lambda e^{-\lambda x} u(x)$$
+
+#### Cumulative Distribution Function
+
+$$F_X(x) = \int_0^x \lambda e^{-\lambda \beta} \text d\beta = 1-e^{-\lambda x}$$
