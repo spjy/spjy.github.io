@@ -276,6 +276,12 @@ The standard deviation describes the spread of values.
 
 $\text{stdiv} = \sqrt{\text{var}[X]}$
 
+## Functions of Random Variables
+
+Given a random variable $X$, we can generate other random variables by applying various transformations on $X$. If $Y$ depends on $X$: $Y = g(X)$
+
+$$p_Y (y) = \sum_{x \mid g(x) = y } p_X(x) $$
+
 ## Joint Probability Mass Function (PMF)
 
 The joint PMF is denoted by

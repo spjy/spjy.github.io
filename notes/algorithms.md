@@ -191,3 +191,15 @@ Suppose we want to delete a node $N$ and we replace it with the node $R$.
    6. If $R$ is the right child,
       1. Rotate $R.parent$ right.
    7. Done.
+
+## Pre-order Tree Traversal
+
+1. Visit node
+2. Traverse left subtree
+3. Traverse right subtree
+
+## In-order Tree Traversal
+
+1. Traverse Left
+2. Visit Node
+3. Traverse right
