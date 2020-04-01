@@ -97,7 +97,7 @@ The system intersects at exactly one point.
 
 ### Infinite Solutions
 
-The system intersects d at every point.
+The system intersects at every point.
 
 ### No Solutions
 
@@ -106,6 +106,12 @@ The system does not intersect at any point.
 ## Consistent Solutions
 
 A system of linear equations is consistent if it has at least one solution. Otherwise, it is inconsistent.
+
+### Independent and Dependent Variables
+
+In a consistent system of linear equations, a variable that is not dependent on another variable is called independent or free.
+
+Otherwise, it is called a dependent variable.
 
 ## Augmented Matrix
 
@@ -136,7 +142,11 @@ a_{m1} & a_{m2} & \dots & a_{mn} & b_n \\
 
 ### Pivot Column
 
-A column containing a leading $1$.
+A pivot column in context of the reduced row echelon form of a matrix is a column containing a leading $1$ (in the leftmost non-zero entry).
+
+### Zero Row
+
+A zero row is a row containing all zeros.
 
 # Scalars
 
@@ -170,10 +180,6 @@ We can represent a certain vector in terms of a linear combination of vectors by
 
 If you fix one vector and vary another by a scalar, the resulting vector draws out a straight line.
 
-### Basis
-
-The basis of a vector space is a set of linearly independent vectors that span the full space.
-
 ### Spanning Sets
 
 The set of all possible linear combinations of $n$ vectors is the **spanning set** of the given $n$ vectors.
@@ -182,7 +188,7 @@ In other words, it is the set of all possible vectors you get by scaling each ve
 
 $$S = \{ \sum_{i=1}^n a_i\bold{v}_i | a_i \in \mathbb{R}, 1 \leq i \leq p \}$$
 
-### Linearly Dependent
+### Linear Dependence
 
 Given a set of vectors $S = \{v_1, v_2, v_3, \ldots, v_n\}$, we say the set of vectors is **linearly dependent** if there are $a_1, a_2, a_3, \ldots, a_n$, $a_i$ not all equal to zero such that
 
@@ -190,21 +196,37 @@ $$a_1 \bold{x}_1 + a_2 \bold{x}_2 + a_3 \bold{x}_3 + ... + a_n \bold{x}_n = 0$$
 
 In other words, there exists a solution that is non-trivial.
 
-A linearly dependent pair of vectors means that a vector does not contribute another dimension to the span. For example, if two vectors are added together and they both have the same span, they are linearly dependent; one vector can be expressed as a linear combination of the others.
-
-### Linearly Independent
+### Linear Independence
 
 On the other hand, the set of vectors $S = \{v_1, v_2, v_3, \ldots, v_n\}$ is **linearly independent** if all $a_i = 0$, the trivial solution, is the only solution.
 
 $$a_1 \bold{x}_1 + a_2 \bold{x}_2 + a_3 \bold{x}_3 + ... + a_n \bold{x}_n = 0$$
 
-If we add a vector to the set that is linearly independent from the other vectors, then we can add another dimension to the span.
+In other words, the only solution that exists is the trivial solution.
+
+### Basis
+
+The basis of a vector space $V$ with a set of vectors $S = \{ \bold{v_1}, \dots, \bold{v_n} \}$ that are:
+- [Linearly independent](#linear-independence)
+- In the spanning set of $V$.
+
+### Column Space
+
+If we have an $m \times n$ matrix $A$ with column vectors $\bold{A}_1$, $\bold{A}_2$, $\dots$, $\bold{A}_n$, then the column space of a matrix $A$ is the set containing the linear combinations of the column vectors of the matrix.
+
+It is denoted as:
+
+$$\mathcal{CS}(\bold A) = \{ \bold{A}_1, \bold{A}_2, \dots \bold{A}_n \}$$
 
 ## Linear Transformation
 
 A **linear transformation** is the act of inputting one vector and manipulating it such that you output a new vector.
 
 For instance if you rotate a vector a certain number of degrees.
+
+## Vector Space
+
+A vector space defines the properties of operations of vectors.
 
 # Matrices
 
@@ -325,6 +347,10 @@ $$-\bold{A} =
 \end{array}
 \right]
 $$
+
+## Nonsingular Matrices
+
+
 
 ## Tensors
 

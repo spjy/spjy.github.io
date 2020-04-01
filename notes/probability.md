@@ -321,7 +321,7 @@ A function $f_X(x)$ is a PDF if it satisfies:
 
 The CDF of a random variable describes the distribution and is defined as:
 
-$$F_X (x) = \bold P(X \leq x)$$
+$$F_X (x) = \bold P(X \leq x) = \int_{-\infty}^x f_X(t) dt$$
 
 In continuous time, for an infinitesimally large step $\Delta x$, the probability is found to be zero.
 
@@ -352,3 +352,38 @@ $$f_X (x) = \begin{cases} \lambda e^{-\lambda x} & x \geq 0 \\ 0 & \text{otherwi
 #### Cumulative Distribution Function
 
 $$F_X(x) = \int_0^x \lambda e^{-\lambda \beta} \text d\beta = 1-e^{-\lambda x}$$
+
+### Gaussian / Normal Random Variable
+
+A Gaussian or normally distributed random variable $X$ is only continuous.
+
+$$f_X (x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-(x-\mu)^2 / 2\sigma^2}$$
+
+It has scalar parameters:
+
+$$\sigma = \sqrt{\text{var}(X)} \quad \sigma > 0$$
+$$\mu = \bold E [X]$$ 
+
+#### Expected Value
+
+$$\bold E [X] = \mu$$
+
+#### Variance
+
+$$\text{var}(X) = \sigma^2$$
+
+### Standard Normal Random Variable
+
+A normal random variable $X$ is standard normal if it has $\bold E [X] = \text{var}(X) = 0$. It is useful to find values for normal distributions. We define:
+
+$$\phi(x) = \bold P (X \leq x) = P(X < x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2 / 2} dt$$
+
+Let $Y$ be another random variable (that is also normal because of linearity) with $\bold E [Y] = \mu$ and $\text{var}(Y) = \sigma^2$. Then:
+
+$$X = \frac{Y - \mu}{\sigma}$$
+
+A useful property is that $\phi(-x) = 1 - \phi(x) \quad \forall x$.
+
+#### Calculation
+
+$$\bold P (Y \leq y) = \bold P (\frac{Y - \mu}{\sigma} \leq \frac{y - \mu}{\sigma}) = \bold (X \leq \frac{y - \mu}{\sigma}) = \phi (\frac{y - \mu}{\sigma}) $$
