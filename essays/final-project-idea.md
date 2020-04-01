@@ -1,6 +1,6 @@
 ---
 title: Final Project Idea
-image:
+image: /images/broken-toilet.jpeg
 date: 2020-03-31
 description: A proposal for how I should tackle my final project for ICS 314.
 tags: Software Engineering, Meteor
