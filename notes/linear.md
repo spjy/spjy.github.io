@@ -348,9 +348,19 @@ $$-\bold{A} =
 \right]
 $$
 
+## Rectangular Matrix
+
+Given an $m \times n$ matrix $A$, $A$ is a rectangular matrix if $m \neq n$.
+
+## Square Matrix
+
+Given an $m \times n$ matrix $A$, $A$ is a square matrix if $m=n$.
+
 ## Nonsingular Matrices
 
+Given a square matrix $A$, suppose that the columns are linearly independent, or the solution set is only the trivial solution.
 
+$A$ is a nonsingular matrix.
 
 ## Tensors
 

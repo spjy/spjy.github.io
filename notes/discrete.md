@@ -695,6 +695,8 @@ $$p_a(x) = x^a \quad \forall x \in \mathbb{R}^+$$
 
 # Graph Theory
 
+## Terms
+
 ### Graph
 
 A graph is a structure of discrete objects with connections between them.
@@ -731,10 +733,6 @@ Two vertices that are connected by an edge.
 
 An edge is incident to a vertex.
 
-### Isolation
-
-A vertex with no edges.
-
 ### Degree
 
 ## Types of Graphs
@@ -767,10 +765,86 @@ A vertex with no edges.
 
 #### Hamiltonian Circuit
 
-# Algorithm Analysis
+## Graph Representation
 
-### Big Omega
+### Adjacentcy List
 
-### Big O
+An adjacency list is usually used in the case of sparse graphs, where $|E| << |V|^2$.
 
-### Big Theta
+A list of the vertices a particular vertex is connected to is what an adjacentcy list consists of.
+
+### Adjacentcy Matrix
+
+In this case, an adjacency matrix is used where $|E|$ is close to $|V|^2$. 
+
+## Algorithms
+
+### Topological Sort
+
+Topological sort sorts directed acyclic graphs. It is usually used like a dependency graph.
+
+$(u, v)$ represents an edge in the edge set.
+
+## Graph Terminology
+
+Given a graph $G = (V, E)$ where $V$ is a vertex set and $E$ is an edge set:
+
+### Isolation
+
+A vertex is isolated if its degree is zero, or in other words it has no edges.
+
+### Path
+
+A path of length $k$ from vertex $u$ to $u'$ in a graph $G=(V,E)$ is a sequence 
+
+$$(v_0, v_1, \dots, v_k)$$
+
+such that $u = v_0$, $u' = v_k$ and $(v_{i - 1}, v_i) \in E$ for $i = 1, 2, \dots, k$.
+
+### Directed Graph
+
+A directed graph contains edges that are directed.
+
+- $V$ is a finite set
+- $E$ is a binary relation on $V$.
+- Self-loops are possible
+
+#### Incidence
+
+An edge $(u, v)$ is incident from $u$ and indicent to $v$. In other words, the edge is directed from $u$ to $v$.
+
+#### Adjacency
+
+Given an edge $(u, v)$, vertex $u$ is adjacent to $v$, but not vice versa.
+
+#### Degree
+
+The degree of a directed graph is its in-degree plus out-degree vertices.
+
+#### Cycle
+
+A path of a directed graph forms a cycle if for a path $(v_0, v_1, \dots, v_k)$ $v_0 = v_k$ and the path contains at least an edge.
+
+### Undirected graph
+
+An undirected graph contains edges that are bidirectional.
+
+- $E$ is a set ${u, v}$ such that $u, v \in V$ and $u \neq v$.
+
+#### Adjacency
+
+Given an edge $(u, v)$, the vertices $u, v$ are adjacent to each other.
+
+#### Degree
+
+The degree of an undirected graph is the number of incident edges onto a vertex.
+
+#### Connectedness
+
+An undirected graph is connected if every vertex is reachable from all other verticies.
+
+### Isomorphic Graphs
+
+Two graphs $G=(V,E)$ and $G'=(V',E')$ are isomorphic if there exists a bijection $f: V \rightarrow V'$ such that $(u,v) \in E$ iff $(f(u), f(v)) \in E'$.
+
+In other words the two graphs $G$ and $G'$ contain the same topology.

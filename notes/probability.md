@@ -323,9 +323,9 @@ The CDF of a random variable describes the distribution and is defined as:
 
 $$F_X (x) = \bold P(X \leq x) = \int_{-\infty}^x f_X(t) dt$$
 
-In continuous time, for an infinitesimally large step $\Delta x$, the probability is found to be zero.
+In continuous time, for an infinitesimally large step $\delta$, the probability is found to be zero.
 
-$$\bold P [2 \leq x \leq 2 + \Delta x] = \int_2^{2+\Delta x} f_X(x) \text dx \approx f_X(2) \Delta X \approx 0$$
+$$\bold P [x \leq x \leq x + \delta] = \int_x^{x+\delta} f_X(x) \text dx \approx f_X(2) \Delta X \approx 0$$
 
 In a semi-closed interval $(a, b]$ for $a< b$,
 
@@ -387,3 +387,74 @@ A useful property is that $\phi(-x) = 1 - \phi(x) \quad \forall x$.
 #### Calculation
 
 $$\bold P (Y \leq y) = \bold P (\frac{Y - \mu}{\sigma} \leq \frac{y - \mu}{\sigma}) = \bold (X \leq \frac{y - \mu}{\sigma}) = \phi (\frac{y - \mu}{\sigma}) $$
+
+# Transforms & Moment Generating Function
+
+The moment generating function represents the distribution of probabilities over the reals. It is similar to the probability generating function, except here we use $e^s$ instead of $z$.
+
+$$M_X(s) = \bold E [e^{sX}] = \begin{cases} \displaystyle \int_{-\infty}^\infty e^{sx} f_X(x) dx & X \text{continuous} \\ \displaystyle \sum_x e^{sx} p_X(x) & X \text{discrete} \end{cases}$$
+
+## Expected Value
+
+$$\bold E [X] = \frac{d}{ds} M_X(s)\Bigr|_{s=0}$$
+$$\bold E [X^n] = \frac{d^n}{ds^n} M_X(s)\Bigr|_{s=0}$$
+
+## Linearity
+
+- If $Y = aX+b$ then $M_Y(s) = e^{sb}M_X(as)$
+
+## Independence
+
+### With transforms
+
+Given $W = X + Y$, if $X$ and $Y$ are independent, then the sum is the multiplication of transforms. $W$'s distribution is characterized by:
+
+$$M_{W}(s) = \bold E[e^{sW}] = \bold E [e^{sX}] \bold E [e^{sY}] = M_X(s) M_Y(s)$$
+
+### With convolution
+
+The density function of multiple variables can also be obtained using convolution. Given $W = X + Y$, if $X$ and $Y$ are independent:
+
+#### Discrete Case
+
+$$p_W(w) = \bold P (X + Y = w) = \sum_x p_X(x) p_Y(w-x)$$
+
+#### Continuous Case
+
+$$\bold P(W \leq w | X = x) = \bold P(Y \leq w - x) = \int_{-\infty}^\infty f_X(x) f_Y(w - x) dx$$
+
+## Multivariate Transform
+
+Given $n$ random variables $X_1, \dots, X_n$ and $s_1, \dots, s_n$ scalars, the multivariate transform is defined as:
+
+$$M_{X_1, \dots, X_n} (s_1, \dots, s_n) = \bold E [e^{s_1 X_1 + \dots + s_n X_n}]$$
+
+## Common Discrete Transforms
+
+### Bernoulli (p)
+
+$$M_X(s) = 1 - p + pe^s \quad k = 0, 1$$
+
+### Binomial (n, p)
+
+$$M_X(s) = (1 - p + pe^2)^n \quad k = 0, 1, \dots, n$$
+
+### Gemoetric (p)
+
+$$M_X(s) = \frac{pe^s}{1 - (1 - pe^s)} \quad k = 1, 2, \dots$$
+
+### Poisson ($\lambda$)
+
+$$M_X(s) = e^{\lambda(e^s - 1)} \quad k = 0, 1, \dots$$
+
+### Uniform (a, b)
+
+$$M_X(s) = \frac{e^{as}}{b - a + 1} \cdot \frac{e^{(b - a + 1)s} - 1}{e^s - 1} \quad k = a, a + 1, \dots, b$$
+
+## Common Continuous Transforms
+
+| Uniform $a \leq x \leq b$ | Exponential $x \geq 0$ | Normal $-\infty < x < \infty$ |
+|-|-|-|
+| $\displaystyle \frac{1}{b - a} \cdot \frac{e^{sb} - e^{sa}}{s} \text{}$ | $\displaystyle \frac{\lambda}{\lambda - s} \quad s < \lambda$ | $\displaystyle e^{(\sigma^2 s^2 / 2) + \mu s} \text{}$ |
+
+
