@@ -388,6 +388,28 @@ A useful property is that $\phi(-x) = 1 - \phi(x) \quad \forall x$.
 
 $$\bold P (Y \leq y) = \bold P (\frac{Y - \mu}{\sigma} \leq \frac{y - \mu}{\sigma}) = \bold (X \leq \frac{y - \mu}{\sigma}) = \phi (\frac{y - \mu}{\sigma}) $$
 
+# Derived Distributions
+
+A derived distribution is useful for finding a PMF or PDF of a function of one or more random variables.
+
+**Note**: When finding the expected value, we do not need to calculate derived distributions.
+
+## Discrete Case
+
+Given a random variable $Y = g(X)$:
+
+$$p_Y = \bold P (g(X) = y) = \sum_{x: g(x) = y} p_X(x)$$
+
+## Continuous Case
+
+First, get the CDF of $Y$:
+
+$$F_Y(y) = \bold P (Y \leq y)$$
+
+Then differentiate the CDF:
+
+$$f_Y(y) = \frac{dF_Y}{dy}(y)$$
+
 # Transforms & Moment Generating Function
 
 The moment generating function represents the distribution of probabilities over the reals. It is similar to the probability generating function, except here we use $e^s$ instead of $z$.
