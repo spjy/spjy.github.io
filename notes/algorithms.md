@@ -290,3 +290,25 @@ Suppose we want to delete a node $N$ and we replace it with the node $R$.
 1. Traverse Left
 2. Visit Node
 3. Traverse right
+
+# Flow Networks
+
+A flow network $G=(V,E)$ is a directed graph that:
+- Has edges $(u,v) \in E$ with $c(u,v) \geq 0$
+- If $\exists (u,v) \in E$, there is no edge $(v,u)$.
+- Has a source node $s$
+- Has a sink node $t$
+- Assume graph is connected
+  - $s$ has an entering edge
+  - $|E| \geq |V| - 1$
+- Has a capacity function $c$
+
+## Capacity Constraint
+
+$\forall u,v \in V, 0 \leq f(u,v) \leq c(u,v)$
+
+## Flow conservation
+
+$\forall u \in V - {s, t}, \displaystyle \sum_{v \in V} f(u, v) = \sum _{v \in V} f(u,v)$
+
+If $(u,v) \nin E$, the flow $f(u,v) = 0$

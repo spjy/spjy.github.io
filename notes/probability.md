@@ -479,4 +479,18 @@ $$M_X(s) = \frac{e^{as}}{b - a + 1} \cdot \frac{e^{(b - a + 1)s} - 1}{e^s - 1} \
 |-|-|-|
 | $\displaystyle \frac{1}{b - a} \cdot \frac{e^{sb} - e^{sa}}{s} \text{}$ | $\displaystyle \frac{\lambda}{\lambda - s} \quad s < \lambda$ | $\displaystyle e^{(\sigma^2 s^2 / 2) + \mu s} \text{}$ |
 
+# Markov Inequality
 
+For a non-negative random variable $X$ and constant $a>0$,
+
+$$\bold P (X \geq a) \leq \frac{\bold E [X]}{a}$$
+
+In other words, the Markov inequality gives the confidence of the probability distribution for the upper bound of values $x \geq a$.
+
+# Chebyshev Inequality
+
+For any random variable $X$,
+
+$$\bold P (|X - \bold E[X]| \geq a) \leq \frac{\sigma_x^2}{a^2}$$
+
+In other words, the Chebyshev inequality provides the confidence of the probability distribution for the range $\bold E[X] \pm a$.
