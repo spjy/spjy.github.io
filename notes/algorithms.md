@@ -312,3 +312,57 @@ $\forall u,v \in V, 0 \leq f(u,v) \leq c(u,v)$
 $\forall u \in V - {s, t}, \displaystyle \sum_{v \in V} f(u, v) = \sum _{v \in V} f(u,v)$
 
 If $(u,v) \nin E$, the flow $f(u,v) = 0$
+
+# NP-completeness
+
+## Non-deterministic Algorithm
+
+A non-deterministic algorithm is one that contains many choices in its logic, and the choice is determined by choice that is arbitrary (e.g. not determined by its inputs).
+
+There exists a solution to the algorithm only if those arbitrary choices make all the correct guesses. 
+
+In other words, we do not know how the algorithm works exactly.
+
+## Deterministic Algorithms
+
+A deterministic algorithm is the opposite of a [non-deterministic algorithm](#non-deterministic-algorithm). Its input determines its output since it is consistent and its logic is known.
+
+## Polynomial Time Reduction
+
+Given two algorithms $A$ and $B$, $A$ reduces to $B$ if we take an instance (input) of $A$ and can transform the instance $B$ in polynomial time and use the answer of the instanced algorithms $B$ for $A$.
+
+Thus, we can deduce that $B$ is as hard as $A$.
+
+## Algorithm Classes
+
+### Polynomial (P) Time
+
+Class $P$ algorithms take polynomial time and are deterministic, such as merge sort ($O(n\log n$) or binary search ($O(\log n)$).
+
+### Non-deterministic Polynomial (NP) Time
+
+Class $NP$ algorithms take polynomial time but are non-deterministic.
+
+We can verify the correctness of the algorithm's solution, but do not have an efficient algorithm to find it.
+
+Also, if one problem in the NP class is solved, all of the other problems will be solved as well.
+
+### NP and P
+
+Relating NP with P, we can say that:
+
+$$P \subseteq NP$$
+
+This is because all algorithms start out to be $NP$, but when we discover their logic and verify it, it becomes $P$.
+
+### NP-hard (NPH)
+
+An algorithm is NP-hard if we could solve it fast, all problems in $NP$-fast can be solved.
+
+Given an algorithm $A$ and $B$, we can [reduce](#reduction) $A$ to $B$ and prove that $B$ is as hard as $A$.
+
+### NP-complete (NPC)
+
+An algorithm is NP-complete if we have a known NP-hard algorithm, and we have an $NP$ algorithm for it, the algorithm becomes NP-complete.
+
+$$NPC = \{ NP \} \cap \{ NPH \}$$
