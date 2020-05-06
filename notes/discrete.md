@@ -848,3 +848,11 @@ An undirected graph is connected if every vertex is reachable from all other ver
 Two graphs $G=(V,E)$ and $G'=(V',E')$ are isomorphic if there exists a bijection $f: V \rightarrow V'$ such that $(u,v) \in E$ iff $(f(u), f(v)) \in E'$.
 
 In other words the two graphs $G$ and $G'$ contain the same topology.
+
+### Relaxation
+
+For each vertex $v \in V$, we have an attribute $v.distance$ that checks whether we can improve the shortest path to $v$ foun so far by going through $u$.
+
+Relaxating an edge $(u,v)$ is merely a test to see if we can improve the shortest path to $v$ so far from the node $u$.
+
+We update $v.distance$ if $v.distance > u.distance + w(u,v)$ to $v.distance = u.distance + w(u,v)$.

@@ -90,6 +90,10 @@ Let $A_1 ... A_n$ be disjoint events that form a partition of the sample space a
 $$\bold{P}(B) = \bold{P}(A_1 \cap B) + ... + \bold{P}(A_n \cap B) \\
 = \bold{P}(A_1)\bold{P}(B|A_1) + ... + \bold{P}(A_n)\bold{P}(B|A_n)$$
 
+More compactly,
+
+$$\bold P(B) = \sum_{i = 1}^n P(A_i)P(B | A_i)$$
+
 This theorem is often seen when adding together various event outcomes to calculate the probability of an event occurring.
 
 ## Bayes' Rule
@@ -192,46 +196,13 @@ Given a PMF, it has the properties:
 - $\bold{P}(X = x) \geq 0$
 - $\displaystyle \sum_x \bold{P}(X = x) = 1$
 
-### Geometric Distribution
-
-The geometric probability mass function describes the situation in which $n$ independent trials are required before the event occurs with probability $p$.
-
-$$P(X = n) = (1-p)^{n-1}p$$
-$$\sum_{k=1}^\infty \bold{P}(X = k) = \sum_{k=1}^\infty (1-p)^{k-1} p$$
-
-In other words, $k-1$ trials occur before the event occurs.
-
-### Binomial Distribution
-
-The binomial probability mass function describes the situation in which the $n$ independent trials occur with $k$ successes with probability $p$ and $n - k$ fails with probability $1-p$.
-
-$$\bold P(X = k) = {n \choose k} p^k (1-p)^k$$
-
-### Bernoulli Distribution
-
-The Bernoulli distribution describes the situation in which the probability mass function consists of a binary set of outcomes, $S_X = \{ 0, 1 \}$. It is a special case of the binomial distribution, where $n = 1$.
-
-$$\bold P (X = x) = \begin{cases}p & x = 1\\1-p & x = 0\end{cases}$$
-
-### Poisson Distribution
-
-The Poisson distribution is a discrete distribution that is useful for counting the average number of occurrences $\lambda$ of an event over some time $t$.
-
-$$\bold P(X = x) = \frac{\lambda^k e^{-\lambda}}{k!} \quad k = 0, 1, 2, \dots$$
-
-#### Expected Value
-
-$$\bold E[X] = \lambda$$
-
-#### Variance
-
-$$\text{Var} (X) = \lambda$$
-
 ## Cumulative Distribution Function (CDF)
 
 The cumulative distribution function describes the situation in which the random value $X$ will take a value less than or equal to $x$.
 
 $$F_X(x) = \bold{P}(X \leq x) = \sum_{k = - \infty}^x P(X = k)$$
+
+In other words, it's the cumulative probability that of a distribution up to a value $x$.
 
 ## Probability Generating Function (PGF)
 
@@ -274,7 +245,90 @@ $$\text{Var}[X] = \bold{E}[X^2] - \bold{E}[X]^2 = \frac{\text{d}^2G_X}{\text{d}z
 
 The standard deviation describes the spread of values.
 
-$\text{stdiv} = \sqrt{\text{var}[X]}$
+$\text{stdiv} = \sigma = \sqrt{\text{var}[X]}$
+
+## Geometric Distribution
+
+The geometric probability mass function describes the situation in which $n$ independent trials are required before the event occurs with probability $p$.
+
+### Probability Mass Function
+
+$$P(X = n) = (1-p)^{n-1}p$$
+$$\sum_{k=1}^\infty \bold{P}(X = k) = \sum_{k=1}^\infty (1-p)^{k-1} p$$
+
+In other words, $k-1$ trials occur before the event occurs.
+
+### Cumulative Density Function
+
+$$\bold P (X \leq x) = 1-(1-p)^{n-1}$$
+
+### Expected Value
+
+$$\bold E[X] = \frac{1}{p}$$
+
+### Variance
+
+$$\text{var}[X] = \frac{1-p}{p^2}$$
+
+## Bernoulli Distribution
+
+The Bernoulli distribution describes the situation in which the probability mass function consists of a binary set of outcomes, $S_X = \{ 0, 1 \}$. It is a special case of the binomial distribution, where $n = 1$.
+
+### Probability Mass Function
+
+$$\bold P (X = x) = \begin{cases}p & x = 1\\1-p & x = 0\end{cases}$$
+
+### Cumulative Density Function
+
+$$\bold P (X \leq x) = \begin{cases}
+0 & k < 0 \\
+1 - p & 0 \leq k < 1 \\
+p & k \geq 1
+\end{cases}$$
+
+### Expected Value
+
+$$\bold E[X] = p$$
+
+### Variance
+
+$$\text{var}[X] = p(1-p)$$
+
+## Binomial Distribution
+
+The binomial probability mass function describes the situation in which the $n$ independent trials occur with $k$ successes with probability $p$ and $n - k$ fails with probability $1-p$ with replacement.
+
+### Probability Mass Function
+
+$$\bold P(X = k) = {n \choose k} p^k (1-p)^k$$
+
+### Cumulative Density Function
+
+$$\bold P(X \leq x) = \sum_{i = 1}^x {n \choose i} p^i (1-p)^{n-i}$$
+
+### Expected Value
+
+$$\bold E[X] = np$$
+
+### Variance
+
+$$\text{var}[X] = np(1-p)$$
+
+## Hypergeometric Distribution
+
+The hypergeometric distribution is a discrete distribution that characterizes the probability of observed $k$ successes in $n$ draws without replacement. $N$ is the population size and $K$ is the number of successes in the population.
+
+### Probability Mass Function
+
+$$\bold P (X = k) = \frac{\begin{pmatrix} K \\ k \end{pmatrix} \begin{pmatrix} N - K \\ n - k \end{pmatrix}}{\begin{pmatrix} N \\ n \end{pmatrix}}$$
+
+### Multivariate Hypergeometric Distribution
+
+$$\frac{\displaystyle \prod_{i = 1}^c \begin{pmatrix} K_i \\ k_i \end{pmatrix}}{\begin{pmatrix} N \\ n \end{pmatrix}}$$
+
+For $c$ different populations $K_i$, we select $k_i$ people.
+
+$N = \displaystyle \sum_{i=1}^c K_i$ is the total number of populations.
 
 ## Functions of Random Variables
 
@@ -296,10 +350,6 @@ The marginal PMF allows us to obtain individual random variable values from a ve
 
 $$\bold P(X = x) = \sum_y \bold P({X = x, Y = y}) $$
 $$\bold P(Y = y) = \sum_x \bold P({X = x, Y = y}) $$
-
-## Conditioning a Random Variable
-
-### On an event
 
 # Continuous Random Variables
 
@@ -331,31 +381,61 @@ In a semi-closed interval $(a, b]$ for $a< b$,
 
 $$P(a < X \leq B) = F_X(b) - F_X(a)$$
 
-### Uniformly Distributed Random Variable
+## Conditioning
+
+### On an event
+
+$$\bold{P} (X \in B \mid X \in A) = \frac{\bold P (X \in B, X \in A)}{\bold P (X \in A)} = \frac{\displaystyle \int_{A \cap B} f_X(x) dx)}{\bold P (X \in A)} = \int_B f_{X \mid A} (x) dx $$
+
+# General Random Variables
+
+
+
+## Uniform Distribution
 
 A uniformly distributed random variable has a constant probability density function.
 
-#### Probability Density Function
+### Probability Density Function
 
 $$f_x(x) = \begin{cases} \frac{1}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
 
-#### Cumulative Distribution Function
+### Cumulative Distribution Function
 
 $$F_X(x) = \int_{-\infty}^\infty f_X(x) \text dx = \begin{cases} 0 & x < a \\ \frac{x - a}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
 
-### Exponentially Distributed Random Variable
+### Expected Value
 
-An exponentially distributed random variable has an exponentially growing probability density function.
+$$\bold E[X] = \frac{1}{2} (a+b)$$
+
+### Variance
+
+$$\text{var}[X] = \frac{1}{12} (b-a)^2$$
+
+## Exponential Distribution
+
+An exponentially distributed random variable has an exponentially growing probability density function with a rate $\lambda$.
+
+It is often used to calculate the inter-arrival time.
+
+### Probability Density Function
 
 $$f_X (x) = \begin{cases} \lambda e^{-\lambda x} & x \geq 0 \\ 0 & \text{otherwise} \end{cases} = \lambda e^{-\lambda x} u(x)$$
 
-#### Cumulative Distribution Function
+### Cumulative Distribution Function
 
 $$F_X(x) = \int_0^x \lambda e^{-\lambda \beta} \text d\beta = 1-e^{-\lambda x}$$
 
-### Gaussian / Normal Random Variable
+### Expected Value
 
-A Gaussian or normally distributed random variable $X$ is only continuous.
+$$\frac{1}{\lambda}$$
+
+### Variance
+
+$$\frac{1}{\lambda^2}$$
+
+## Gaussian / Normal Distribution
+
+A Gaussian or normally distributed Distribution $X$ is only continuous.
 
 $$f_X (x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-(x-\mu)^2 / 2\sigma^2}$$
 
@@ -364,29 +444,77 @@ It has scalar parameters:
 $$\sigma = \sqrt{\text{var}(X)} \quad \sigma > 0$$
 $$\mu = \bold E [X]$$ 
 
-#### Expected Value
+### Expected Value
 
 $$\bold E [X] = \mu$$
 
-#### Variance
+### Variance
 
 $$\text{var}(X) = \sigma^2$$
 
-### Standard Normal Random Variable
+## Standard Normal Distribution
 
-A normal random variable $X$ is standard normal if it has $\bold E [X] = \text{var}(X) = 0$. It is useful to find values for normal distributions. We define:
+A normal random variable $X$ is standard normal if it has $\bold E [X] = 0$ and $\text{var}(X) = 1$. It is useful to find values for normal distributions since solving for the regular normal random variable is difficult. We define:
 
-$$\phi(x) = \bold P (X \leq x) = P(X < x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2 / 2} dt$$
+$$\phi(y) = \bold P (Y \leq y) = P(Y < y) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^y e^{-t^2 / 2} dt$$
 
 Let $Y$ be another random variable (that is also normal because of linearity) with $\bold E [Y] = \mu$ and $\text{var}(Y) = \sigma^2$. Then:
 
-$$X = \frac{Y - \mu}{\sigma}$$
+$$Y = \frac{X - \mu}{\sigma}$$
 
 A useful property is that $\phi(-x) = 1 - \phi(x) \quad \forall x$.
 
-#### Calculation
+### Calculating the Normal Distribution
 
-$$\bold P (Y \leq y) = \bold P (\frac{Y - \mu}{\sigma} \leq \frac{y - \mu}{\sigma}) = \bold (X \leq \frac{y - \mu}{\sigma}) = \phi (\frac{y - \mu}{\sigma}) $$
+To properly use the standard normal table, we need to normalize the normal distribution to have a mean $\bold \mu = E[X] = 0$ and variance $\sigma^2 = 1$, also written as $X \sim N(\mu, \sigma^2) = N(0, 1)$.
+
+We calculate the standard normal variable $Y$, which is the normalized version of the normal random variable:
+
+$$\bold P (X \leq x) = \bold P \bigg(\frac{X - \mu}{\sigma} \leq \frac{x - \mu}{\sigma}\bigg) = \bold P \bigg(Y \leq \frac{x - \mu}{\sigma}\bigg) = \phi \bigg(\frac{x - \mu}{\sigma} \bigg) $$
+
+## Poisson Distribution
+
+The Poisson distribution is a discrete distribution that is useful for calculating the likelihood of the average rate of occurrences $\lambda$ of an event over some time $t$. $k$ is the number of occurrences.
+
+$$\bold P(X = k) = \frac{\lambda t^k e^{-\lambda t}}{k!} \quad k = 0, 1, 2, \dots$$
+
+### Expected Value
+
+$$\bold E[X] = \lambda t$$
+
+### Variance
+
+$$\text{var}[X] = \lambda t$$
+
+### Transform
+
+$$X(z) = e^{\lambda t (z - 1)}$$
+
+## Erlang Distribution
+
+The Erlang distribution is a **continuous distribution** that is useful for calculating the probability the of wait time given the average rate of occurrences $\lambda$ and $n$ number of occurrences.
+
+In other words, the $n$-Erlang distribution is defined by a sum of exponential random variables $X = X_1 + X_2 + \dots + X_n$ where $X_i$ represents the $i$-th occurrence.
+
+Given $n \in \mathbb{R}^+$ with a rate $\lambda > 0$, the $n$-Erlang PDF is given by:
+
+$$f_X(x) = \frac{\lambda^n x^{n - 1} e^{-\lambda x}}{(n - 1)!} \quad x \geq 0$$
+
+### Expected Value
+
+$$\bold E[X] = \frac{n}{\lambda}$$
+
+### Variance
+
+$$\text{var}[X] = \frac{n}{\lambda^2}$$
+
+## Rayleigh Distribution
+
+The Rayleigh distribution is a continuous distribution used to often measure component lifetime.
+
+$$f_X(x) = x e^{-x^2/2}$$
+
+This PDF originates from the magnitude of two independently, normally distributed, and non-negative random variables, $\sqrt{X^2 + Y^2}$.
 
 # Derived Distributions
 
@@ -394,21 +522,88 @@ A derived distribution is useful for finding a PMF or PDF of a function of one o
 
 **Note**: When finding the expected value, we do not need to calculate derived distributions.
 
-## Discrete Case
+## Discrete
 
 Given a random variable $Y = g(X)$:
 
 $$p_Y = \bold P (g(X) = y) = \sum_{x: g(x) = y} p_X(x)$$
 
-## Continuous Case
+## Continuous
+
+Given a function of one random variable $Y = g(X)$ and its PDF $f_X(x)$:
 
 First, get the CDF of $Y$:
 
-$$F_Y(y) = \bold P (Y \leq y)$$
+$$F_Y(y) = \bold P (g(X) \leq y) = \int_{x: g(x) \leq y} f_X(x) dx$$
 
 Then differentiate the CDF:
 
 $$f_Y(y) = \frac{dF_Y}{dy}(y)$$
+
+## Solving Cases
+
+### Multi-variable Derived Distribution
+
+Given a function of random variable $W = g(X, Y)$ and its PDF $f_W(w)$:
+
+First, get the CDF of $W$:
+
+$$F_W(w) = \bold P (g(X,y) \leq w) = \iint_{(x, y) \mid g(x,y) \leq w} f_W(w) dydx$$
+
+Then differentiate the CDF:
+
+$$f_W(w) = \frac{dF_W}{dw}(w)$$
+
+### Multi-variable Derived Distribution with Joint PDF
+
+Given $V = g_1(X, Y)$ and $W = g_2(X, Y)$ with joint PDF $f_{X,Y}(x,y)$ and
+
+- $v = g_1(x,y), w = g_2(x,y)$ can be uniquely solved for $x,y$ in terms of $v,w$; for example $x=h_1(v,w), y=h_2(v,w)$
+- The derivatives of $x,y$ with respect to $v,w$ are continuous and exist.
+
+Then, solve for $x=h_1(v,w), y=h_2(v,w)$ and use the equation:
+
+$$f_{V,W}(v,w) = f_{X,Y}[h_1(v,w), h_2(v,w)] |J(v,w)|$$ 
+
+Where $J(v,w)$ is the Jacobian:
+
+$$J(v,w) = \begin{vmatrix}
+\displaystyle \frac{\partial x}{\partial v} & \displaystyle \frac{\partial x}{\partial w} \\[10pt]
+\displaystyle \frac{\partial y}{\partial v} & \displaystyle \frac{\partial y}{\partial w}
+\end{vmatrix}$$
+
+### Sum of Independent Random Variables (Convolution)
+
+# Expectation
+
+The expected value predicts the value of a random variable. 
+
+$$\bold E [g(X,Y)] = \begin{cases}
+\displaystyle \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X,Y) f_{X,Y}(x,y) dxdy & \text{continuous} \\
+\displaystyle \sum_{-\infty}^{\infty} \sum_{-\infty}^{\infty} g(X,Y) p_{X,Y}(x,y)& \text{discrete}
+\end{cases}$$
+
+## Covariance
+
+The covariance tells us how two random variables $X$ and $Y$ vary.
+
+$$\text{cov}(X,Y) = \bold E[(X - \bold E[X])(Y - \bold E[Y])]$$
+
+$$\bold E [XY] - \bold E[X] \bold E[Y]$$
+
+## Correlation
+
+The correlation tells us how related two random variables $X$ and $Y$ are.
+
+$$\rho_{XY}(x,y) = \frac{\text{cov}(X,Y)}{\sigma_x \sigma_y} = \frac{\bold E [XY] - \bold E[X] \bold E[Y]}{\sigma_x \sigma_y}$$
+
+## Sum of Expectations
+
+Given a sum of random variables $W=X+Y$, we observe:
+
+$$\bold E[W] = \bold E[X+Y] = \bold E[X] + \bold E[Y]$$
+
+from the linearity of integration. Note that this property is true even if $X,Y$ are dependent.
 
 # Transforms & Moment Generating Function
 
@@ -461,7 +656,7 @@ $$M_X(s) = 1 - p + pe^s \quad k = 0, 1$$
 
 $$M_X(s) = (1 - p + pe^2)^n \quad k = 0, 1, \dots, n$$
 
-### Gemoetric (p)
+### Geometric (p)
 
 $$M_X(s) = \frac{pe^s}{1 - (1 - pe^s)} \quad k = 1, 2, \dots$$
 
@@ -479,7 +674,39 @@ $$M_X(s) = \frac{e^{as}}{b - a + 1} \cdot \frac{e^{(b - a + 1)s} - 1}{e^s - 1} \
 |-|-|-|
 | $\displaystyle \frac{1}{b - a} \cdot \frac{e^{sb} - e^{sa}}{s} \text{}$ | $\displaystyle \frac{\lambda}{\lambda - s} \quad s < \lambda$ | $\displaystyle e^{(\sigma^2 s^2 / 2) + \mu s} \text{}$ |
 
-# Markov Inequality
+# Limit Theorems
+
+Limit theorems answer questions to asymptotic behaviors to sequences of independently identically distributed random variables $S_n = X_1, X_2, \dots, X_n$ as $n \rightarrow \infty$.
+
+## Sample Mean
+
+The sample mean of a distribution is the average of picked values from the distribution.
+
+$$M_n = \frac{1}{n} \sum_{i = 1}^n X_i = \frac{S_n}{n}$$
+
+From it, we can derive that
+
+$$\bold E [M_n] = \mu$$
+
+$$\text{var}(M_n) = \frac{\sigma^2}{n}$$
+
+## Central Limit Theorem
+
+For $X_1, X_2, \dots$ independently and identically distributed random variables with common mean $\bold E[X]$ and variance $\sigma^2$.
+
+$$Z_n = \frac{X_1 + \dots + X_n - n\mu}{\sigma \sqrt{n}}$$
+
+We notice that as $n \rightarrow \infty$, $Z_n$ converges to the standard normal cumulative distribution function:
+
+$$\lim_{n \rightarrow \infty} \bold P(Z_n \leq z) = \Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^z e^{-x^2 / 2} dx$$
+
+### De-Moivre - Laplace Approximation (1/2 approximation)
+
+For a binomial random variable  with $n \rightarrow \infty$ and $p$ with $k,l \in \mathbb{Z}^+$
+
+$$\bold P (k \leq S_n \leq l) = \Phi(\frac{l + \frac{1}{2} - np}{\sqrt{np(1-p)}}) - \Phi(\frac{k - \frac{1}{2} - np}{\sqrt{np(1-p)}}) $$
+
+## Markov Inequality
 
 For a non-negative random variable $X$ and constant $a>0$,
 
@@ -487,10 +714,18 @@ $$\bold P (X \geq a) \leq \frac{\bold E [X]}{a}$$
 
 In other words, the Markov inequality gives the confidence of the probability distribution for the upper bound of values $x \geq a$.
 
-# Chebyshev Inequality
+## Chebyshev Inequality
 
 For any random variable $X$,
 
 $$\bold P (|X - \bold E[X]| \geq a) \leq \frac{\sigma_x^2}{a^2}$$
 
 In other words, the Chebyshev inequality provides the confidence of the probability distribution for the range $\bold E[X] \pm a$.
+
+## The Weak Law of Large Numbers
+
+For a finite mean $\bold E[X]$ and $\epsilon > 0$,
+
+$$\lim_{n \rightarrow \infty} \bold P [|M_n - \mu| < \epsilon] = 1$$
+
+In other words, it tells us that if we had infinitely many data points, the sample mean converges in probability towards the expected value.
