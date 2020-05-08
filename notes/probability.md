@@ -63,6 +63,10 @@ Given an event $A$ with $n$ possible outcomes, the probability of any event $A$ 
 
 $$\bold{P}(A) = \frac{\text{number of elements of A}}{n}$$
 
+### Intersection
+
+$$\bold P (AB) = \bold P(A) + \bold P(B) - \bold P(A\cup B)$$
+
 # Conditional Probability
 
 When only partial information is given and we want to know the outcome of an experiment, conditional probability is useful.
@@ -79,7 +83,7 @@ In other words, the conditional probability is the ratio of $A$ and $B$ occurrin
 
 Assuming all of the conditioning events have positive probability,
 
-$$\bold{P}(\bigcap^n_{i=1} A_i = \bold{P}(A_1) \bold{P}(A_2|A_1)\bold{P}(A_3|A_1 \cap A_2) ... \bold{P}(A_n | \bigcap^{n-1}_{i=1}) A_i)$$
+$$\bold{P}\bigg(\bigcap^n_{i=1} A_i\bigg) = \bold{P}(A_1) \bold{P}(A_2|A_1)\bold{P}(A_3|A_1 \cap A_2) ... \bold{P}\bigg(A_n | \bigcap^{n-1}_{i=1}) A_i\bigg)$$
 
 This rule is often seen when multiplying independent events together in a tree diagram.
 
@@ -106,7 +110,7 @@ $$\bold{P}(A_i | B) = \frac{\bold{P}(A_i)\bold{P}(B | A_i)}{\bold{P}(B)} = \frac
 
 $A$ is independent of $B$ if 
 
-$$\bold{P}(A|B) = \bold{P}(A) = \frac{\bold{P}(A \cup B)}{\bold{P}(B)}$$
+$$\bold{P}(A|B) = \bold{P}(A) = \frac{\bold{P}(A \cap B)}{\bold{P}(B)} = \frac{\bold{P}(A) \bold P(B)}{\bold{P}(B)}$$
 
 Also, if $\bold{P}(B) > 0$
 
@@ -239,7 +243,7 @@ $$\frac{\text{d}^2G_X}{\text{d}z^2}\Bigr|_{z=1} + \frac{\text{d}G_X}{\text{d}z}\
 
 The variance tells us how far numbers are spread out from the average or expected value.
 
-$$\text{Var}[X] = \bold{E}[X^2] - \bold{E}[X]^2 = \frac{\text{d}^2G_X}{\text{d}z^2}\Bigr|_{z=1} + \frac{\text{d}G_X}{\text{d}z}\Bigr|_{z=1} - \Big(\frac{\text{d}G_X}{\text{d}z}\Bigr|_{z=1}\Big)^2$$
+$$\text{Var}[X] = \bold{E}[X^2] - \bold{E}[X]^2 = \frac{\text{d}^2G_X}{\text{d}z^2}\Bigr|_{z=1} + \frac{\text{d}G_X}{\text{d}z}\Bigr|_{z=1} - \bigg(\frac{\text{d}G_X}{\text{d}z}\Bigr|_{z=1}\bigg)^2$$
 
 ### Standard Deviation
 
@@ -247,28 +251,9 @@ The standard deviation describes the spread of values.
 
 $\text{stdiv} = \sigma = \sqrt{\text{var}[X]}$
 
-## Geometric Distribution
+## Discrete Random Variable Conditioning
 
-The geometric probability mass function describes the situation in which $n$ independent trials are required before the event occurs with probability $p$.
-
-### Probability Mass Function
-
-$$P(X = n) = (1-p)^{n-1}p$$
-$$\sum_{k=1}^\infty \bold{P}(X = k) = \sum_{k=1}^\infty (1-p)^{k-1} p$$
-
-In other words, $k-1$ trials occur before the event occurs.
-
-### Cumulative Density Function
-
-$$\bold P (X \leq x) = 1-(1-p)^{n-1}$$
-
-### Expected Value
-
-$$\bold E[X] = \frac{1}{p}$$
-
-### Variance
-
-$$\text{var}[X] = \frac{1-p}{p^2}$$
+$$\bold P(X = x \mid Y = y) = \frac{\bold P(X = x, Y = y)}{\bold P(Y = y)}$$
 
 ## Bernoulli Distribution
 
@@ -294,6 +279,10 @@ $$\bold E[X] = p$$
 
 $$\text{var}[X] = p(1-p)$$
 
+### Transform
+
+$$M_X(s) = 1 - p + pe^s \quad k = 0, 1$$
+
 ## Binomial Distribution
 
 The binomial probability mass function describes the situation in which the $n$ independent trials occur with $k$ successes with probability $p$ and $n - k$ fails with probability $1-p$ with replacement.
@@ -314,6 +303,37 @@ $$\bold E[X] = np$$
 
 $$\text{var}[X] = np(1-p)$$
 
+### Transform
+
+$$M_X(s) = (1 - p + pe^s)^n \quad k = 0, 1, \dots, n$$
+
+## Geometric Distribution
+
+The geometric probability mass function describes the situation in which $n$ independent trials are required before the event occurs with probability $p$.
+
+### Probability Mass Function
+
+$$P(X = n) = (1-p)^{n-1}p$$
+$$\sum_{k=1}^\infty \bold{P}(X = k) = \sum_{k=1}^\infty (1-p)^{k-1} p$$
+
+In other words, $k-1$ trials occur before the event occurs.
+
+### Cumulative Density Function
+
+$$\bold P (X \leq x) = 1-(1-p)^{n-1}$$
+
+### Expected Value
+
+$$\bold E[X] = \frac{1}{p}$$
+
+### Variance
+
+$$\text{var}[X] = \frac{1-p}{p^2}$$
+
+### Transform
+
+$$M_X(s) = \frac{pe^s}{1 - (1 - p) e^s)} \quad k = 1, 2, \dots$$
+
 ## Hypergeometric Distribution
 
 The hypergeometric distribution is a discrete distribution that characterizes the probability of observed $k$ successes in $n$ draws without replacement. $N$ is the population size and $K$ is the number of successes in the population.
@@ -329,6 +349,24 @@ $$\frac{\displaystyle \prod_{i = 1}^c \begin{pmatrix} K_i \\ k_i \end{pmatrix}}{
 For $c$ different populations $K_i$, we select $k_i$ people.
 
 $N = \displaystyle \sum_{i=1}^c K_i$ is the total number of populations.
+
+## Poisson Distribution
+
+The Poisson distribution is a discrete distribution that is useful for calculating the likelihood of the average rate of occurrences $\lambda$ of an event over some time $t$. $k$ is the number of occurrences.
+
+$$\bold P(X = k) = \frac{\lambda t^k e^{-\lambda t}}{k!} \quad k = 0, 1, 2, \dots$$
+
+### Expected Value
+
+$$\bold E[X] = \lambda t$$
+
+### Variance
+
+$$\text{var}[X] = \lambda t$$
+
+### Transform
+
+$$X(z) = e^{\lambda t (z - 1)}$$
 
 ## Functions of Random Variables
 
@@ -367,6 +405,14 @@ A function $f_X(x)$ is a PDF if it satisfies:
 - $\displaystyle \int_{-\infty}^\infty f_X(x) \text dx = 1$
 - $\forall$ numbers $a$, $b$ then $\displaystyle \bold P [a \leq X \leq b] = \int_a^b f_X(x) \text dx$
 
+### Marginal PDF
+
+The marginal PDF extracts the density function for a random variable from a joint PDF.
+
+$$f_X(x) = \int_{-\infty}^\infty f_{X,Y}(X,Y) dy$$
+
+$$f_Y(y) = \int_{-\infty}^\infty f_{X,Y}(X,Y) dx$$
+
 ## Cumulative Distribution Function (CDF)
 
 The CDF of a random variable describes the distribution and is defined as:
@@ -389,8 +435,6 @@ $$\bold{P} (X \in B \mid X \in A) = \frac{\bold P (X \in B, X \in A)}{\bold P (X
 
 # General Random Variables
 
-
-
 ## Uniform Distribution
 
 A uniformly distributed random variable has a constant probability density function.
@@ -411,6 +455,10 @@ $$\bold E[X] = \frac{1}{2} (a+b)$$
 
 $$\text{var}[X] = \frac{1}{12} (b-a)^2$$
 
+### Transform
+
+$$M_X(s) = \frac{e^{as}}{b - a + 1} \cdot \frac{e^{(b - a + 1)s} - 1}{e^s - 1} \quad k = a, a + 1, \dots, b$$
+
 ## Exponential Distribution
 
 An exponentially distributed random variable has an exponentially growing probability density function with a rate $\lambda$.
@@ -427,15 +475,19 @@ $$F_X(x) = \int_0^x \lambda e^{-\lambda \beta} \text d\beta = 1-e^{-\lambda x}$$
 
 ### Expected Value
 
-$$\frac{1}{\lambda}$$
+$$\bold E[X] = \frac{1}{\lambda}$$
 
 ### Variance
 
-$$\frac{1}{\lambda^2}$$
+$$\text{var}[X] = \frac{1}{\lambda^2}$$
+
+### Transform
+
+$$M_X(s) = \displaystyle \frac{\lambda}{\lambda - s} \quad s < \lambda$$
 
 ## Gaussian / Normal Distribution
 
-A Gaussian or normally distributed Distribution $X$ is only continuous.
+A Gaussian or normally distributed distribution $X$ is only continuous.
 
 $$f_X (x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-(x-\mu)^2 / 2\sigma^2}$$
 
@@ -451,6 +503,10 @@ $$\bold E [X] = \mu$$
 ### Variance
 
 $$\text{var}(X) = \sigma^2$$
+
+### Transform
+
+$$M_X(s) = \displaystyle e^{(\sigma^2 s^2 / 2) + \mu s}$$
 
 ## Standard Normal Distribution
 
@@ -472,24 +528,6 @@ We calculate the standard normal variable $Y$, which is the normalized version o
 
 $$\bold P (X \leq x) = \bold P \bigg(\frac{X - \mu}{\sigma} \leq \frac{x - \mu}{\sigma}\bigg) = \bold P \bigg(Y \leq \frac{x - \mu}{\sigma}\bigg) = \phi \bigg(\frac{x - \mu}{\sigma} \bigg) $$
 
-## Poisson Distribution
-
-The Poisson distribution is a discrete distribution that is useful for calculating the likelihood of the average rate of occurrences $\lambda$ of an event over some time $t$. $k$ is the number of occurrences.
-
-$$\bold P(X = k) = \frac{\lambda t^k e^{-\lambda t}}{k!} \quad k = 0, 1, 2, \dots$$
-
-### Expected Value
-
-$$\bold E[X] = \lambda t$$
-
-### Variance
-
-$$\text{var}[X] = \lambda t$$
-
-### Transform
-
-$$X(z) = e^{\lambda t (z - 1)}$$
-
 ## Erlang Distribution
 
 The Erlang distribution is a **continuous distribution** that is useful for calculating the probability the of wait time given the average rate of occurrences $\lambda$ and $n$ number of occurrences.
@@ -507,6 +545,10 @@ $$\bold E[X] = \frac{n}{\lambda}$$
 ### Variance
 
 $$\text{var}[X] = \frac{n}{\lambda^2}$$
+
+### Transforms
+
+$$M_X(s) = \bigg(\frac{\lambda}{\lambda + s}\bigg)^n$$
 
 ## Rayleigh Distribution
 
@@ -583,9 +625,25 @@ $$\bold E [g(X,Y)] = \begin{cases}
 \displaystyle \sum_{-\infty}^{\infty} \sum_{-\infty}^{\infty} g(X,Y) p_{X,Y}(x,y)& \text{discrete}
 \end{cases}$$
 
+## Conditional Expectation
+
+Given a fixed value $Y = y$, we can find the expected value of $X$.
+
+$$\bold E[X | Y = y] = \begin{cases}
+\displaystyle \int_{-\infty}^\infty f_{X \mid Y}(x | y) dx  & \text{continuous} \\
+\displaystyle \sum_x x \bold P(X = x \mid Y = y) & \text{discrete}
+\end{cases}$$
+
+## Law of Iterated (Total) Expectation
+
+$$\bold E[X] = \bold E[\bold E[X | Y]] = \begin{cases}
+\displaystyle \int_{-\infty}^\infty \bold E[X|Y=y] f_Y(y) dy & \text{continuous} \\
+\displaystyle \sum_y \bold E [X|Y=y] \bold P[Y = y] & \text{discrete}
+\end{cases}$$
+
 ## Covariance
 
-The covariance tells us how two random variables $X$ and $Y$ vary.
+The covariance tells us how two random variables $X$ and $Y$ are related.
 
 $$\text{cov}(X,Y) = \bold E[(X - \bold E[X])(Y - \bold E[Y])]$$
 
@@ -593,9 +651,17 @@ $$\bold E [XY] - \bold E[X] \bold E[Y]$$
 
 ## Correlation
 
-The correlation tells us how related two random variables $X$ and $Y$ are.
+The correlation tells us how linearly related two random variables $X$ and $Y$ are.
 
 $$\rho_{XY}(x,y) = \frac{\text{cov}(X,Y)}{\sigma_x \sigma_y} = \frac{\bold E [XY] - \bold E[X] \bold E[Y]}{\sigma_x \sigma_y}$$
+
+- If $X,Y$ are independent, then $\rho_{X,Y} = 0$.
+- $\rho_{X,Y}$ = 0 means $X$ and $Y$ are uncorrelated.
+- $-1 \leq \rho_{X,Y} \leq 1$
+  - $\rho_{X,Y}(x,y) \rightarrow -1$ with high $X$ and low $Y$
+  - $\rho_{X,Y}(x,y) \rightarrow 1$ with low $X$ and high $Y$
+- $\rho_{X,Y} = 1 \iff Y = aX+b \quad a > 0$
+- $\rho_{X,Y} = -1 \iff Y = aX+b \quad a < 0$
 
 ## Sum of Expectations
 
@@ -604,6 +670,18 @@ Given a sum of random variables $W=X+Y$, we observe:
 $$\bold E[W] = \bold E[X+Y] = \bold E[X] + \bold E[Y]$$
 
 from the linearity of integration. Note that this property is true even if $X,Y$ are dependent.
+
+## Sum of Variances
+
+Unlike expectation, variance is not linear. Thus,
+
+$$\text{var}[aX+bY] = a^2 \text{var}[X] + b^2 \text{var}[Y] + 2ab \text{ } \text{cov}(X,Y)$$
+
+## Mean Squared Error
+
+If we want to estimate the value of an unobserved random variable $X$, we can calculate the mean squared error.
+
+$$\text{MSE} = [M_n - \bold E[X]] = \text{var}[M_n] = \frac{1}{n^2} \sum_{i=1}^n X_i = \frac{1}{n^2} n \sigma_x^2 = \frac{\sigma_x^2}{n}$$
 
 # Transforms & Moment Generating Function
 
@@ -645,34 +723,6 @@ $$\bold P(W \leq w | X = x) = \bold P(Y \leq w - x) = \int_{-\infty}^\infty f_X(
 Given $n$ random variables $X_1, \dots, X_n$ and $s_1, \dots, s_n$ scalars, the multivariate transform is defined as:
 
 $$M_{X_1, \dots, X_n} (s_1, \dots, s_n) = \bold E [e^{s_1 X_1 + \dots + s_n X_n}]$$
-
-## Common Discrete Transforms
-
-### Bernoulli (p)
-
-$$M_X(s) = 1 - p + pe^s \quad k = 0, 1$$
-
-### Binomial (n, p)
-
-$$M_X(s) = (1 - p + pe^2)^n \quad k = 0, 1, \dots, n$$
-
-### Geometric (p)
-
-$$M_X(s) = \frac{pe^s}{1 - (1 - pe^s)} \quad k = 1, 2, \dots$$
-
-### Poisson ($\lambda$)
-
-$$M_X(s) = e^{\lambda(e^s - 1)} \quad k = 0, 1, \dots$$
-
-### Uniform (a, b)
-
-$$M_X(s) = \frac{e^{as}}{b - a + 1} \cdot \frac{e^{(b - a + 1)s} - 1}{e^s - 1} \quad k = a, a + 1, \dots, b$$
-
-## Common Continuous Transforms
-
-| Uniform $a \leq x \leq b$ | Exponential $x \geq 0$ | Normal $-\infty < x < \infty$ |
-|-|-|-|
-| $\displaystyle \frac{1}{b - a} \cdot \frac{e^{sb} - e^{sa}}{s} \text{}$ | $\displaystyle \frac{\lambda}{\lambda - s} \quad s < \lambda$ | $\displaystyle e^{(\sigma^2 s^2 / 2) + \mu s} \text{}$ |
 
 # Limit Theorems
 
