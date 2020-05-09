@@ -421,7 +421,7 @@ $$F_X (x) = \bold P(X \leq x) = \int_{-\infty}^x f_X(t) dt$$
 
 In continuous time, for an infinitesimally large step $\delta$, the probability is found to be zero.
 
-$$\bold P [x \leq x \leq x + \delta] = \int_x^{x+\delta} f_X(x) \text dx \approx f_X(2) \Delta X \approx 0$$
+$$\bold P [x \leq x \leq x + \delta] = \int_x^{x+\delta} f_X(x) \text dx \approx f_X(\delta) \delta X \approx 0$$
 
 In a semi-closed interval $(a, b]$ for $a< b$,
 
@@ -441,11 +441,11 @@ A uniformly distributed random variable has a constant probability density funct
 
 ### Probability Density Function
 
-$$f_x(x) = \begin{cases} \frac{1}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
+$$f_X(x) = \begin{cases} \frac{1}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
 
 ### Cumulative Distribution Function
 
-$$F_X(x) = \int_{-\infty}^\infty f_X(x) \text dx = \begin{cases} 0 & x < a \\ \frac{x - a}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
+$$F_X(x) = \int_{a}^x f_X(x) \text dx = \begin{cases} 0 & x < a \\ \frac{x - a}{b - a} & a \leq x \leq b \\ 0 & \text{otherwise} \end{cases}$$
 
 ### Expected Value
 
@@ -590,7 +590,7 @@ Given a function of random variable $W = g(X, Y)$ and its PDF $f_W(w)$:
 
 First, get the CDF of $W$:
 
-$$F_W(w) = \bold P (g(X,y) \leq w) = \iint_{(x, y) \mid g(x,y) \leq w} f_W(w) dydx$$
+$$F_W(w) = \bold P (g(X,Y) \leq w) = \iint_{(x, y) \mid g(x,y) \leq w} f_W(w) dydx$$
 
 Then differentiate the CDF:
 
@@ -630,7 +630,7 @@ $$\bold E [g(X,Y)] = \begin{cases}
 Given a fixed value $Y = y$, we can find the expected value of $X$.
 
 $$\bold E[X | Y = y] = \begin{cases}
-\displaystyle \int_{-\infty}^\infty f_{X \mid Y}(x | y) dx  & \text{continuous} \\
+\displaystyle \int_{-\infty}^\infty x f_{X \mid Y}(x | y) dx  & \text{continuous} \\
 \displaystyle \sum_x x \bold P(X = x \mid Y = y) & \text{discrete}
 \end{cases}$$
 
