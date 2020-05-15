@@ -3,7 +3,7 @@ title: Egregious Ethics
 image: /images/gavel.jpg
 date: 2020-04-23
 description: Ethics are what keeps order in the world. People and companies do not always abide by them.
-tags: Ethics, Software Engineering, Morals
+tags: Ethics, Morals
 github:
 link:
 ---

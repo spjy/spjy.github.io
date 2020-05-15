@@ -3,7 +3,7 @@ title: Documented Designs
 image: /images/repeat-design.jpg
 date: 2020-04-30
 description: Design patterns help us to solve common problems. Use them!
-tags: Software Engineering, Design Patterns
+tags: Design Patterns
 github:
 link:
 ---

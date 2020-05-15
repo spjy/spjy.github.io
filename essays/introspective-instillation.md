@@ -3,7 +3,7 @@ title: Introspective Instillation
 image: /images/code.jpg
 date: 2020-05-07
 description: Software engineering is an extensive field, and I have explored it.
-tags: Software Engineering
+tags: Software Engineering, Reflection
 github:
 link:
 ---
