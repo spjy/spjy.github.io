@@ -266,9 +266,9 @@ $$\bold P (X = x) = \begin{cases}p & x = 1\\1-p & x = 0\end{cases}$$
 ### Cumulative Density Function
 
 $$\bold P (X \leq x) = \begin{cases}
-0 & k < 0 \\
-1 - p & 0 \leq k < 1 \\
-p & k \geq 1
+0 & x < 0 \\
+1 - p & 0 \leq x < 1 \\
+p & x \geq 1
 \end{cases}$$
 
 ### Expected Value
