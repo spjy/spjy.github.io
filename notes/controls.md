@@ -121,7 +121,7 @@ $$T_s = \frac{4}{a}$$
 
 The step response of a second order system is:
 
-$$C(s) = G(s)R(s) = \frac{\omega_n^2}{s(s^2+2\zeta s+\omega_n^2)}$$
+$$C(s) = G(s)R(s) = \frac{\omega_n^2}{s(s^2+2\zeta \omega_n s+\omega_n^2)}$$
 
 ### Natural Frequency $\omega_n$
 
@@ -141,9 +141,9 @@ $$s_{1,2} = -\zeta w_n \pm w_n \sqrt{\zeta^2 - 1}$$
 
 ### Rise Time
 
-See [rise time](#rise-time).
+The rise time is the time to go from 0.1 $\rightarrow$ 0.9 of its final value.
 
-$$T_r = \frac{\pi - \tan^{-1}\frac{\sqrt{1-\zeta^2}}{\zeta}}{\omega_n (1-\zeta)}$$
+$$T_r = \frac{\pi - \tan^{-1}\frac{\sqrt{1-\zeta^2}}{\zeta}}{\omega_n \sqrt{1-\zeta}}$$
 
 ### Peak Time
 
@@ -151,15 +151,23 @@ The peak time is the time to reach the maximum.
 
 $$T_p = \frac{\pi}{\omega_n \sqrt{1-\zeta^2}}$$
 
+#### Damped Frequency of Oscillation
+
+$$w_d \triangleq \omega_n \sqrt{1-\zeta^2}$$
+
 ### Percent Overshoot
 
 The percent overshoot is how much the waveform overshoots the steady state value. It is the difference between the peak and the steady state value, expressed in terms of a percentage.
 
-$$OS = e^{-(\zeta \pi / \sqrt{1-\zeta^2})}$$
+$$\%OS = e^{-(\zeta \pi / \sqrt{1-\zeta^2})} \cdot 100$$
+
+We can derive the damping frequency from the $\%OS$.
+
+$$\zeta = \frac{-\ln(\%OS / 100)}{\sqrt{\pi^2 + \ln^2(\%OS/100)}}$$
 
 ### Settling Time 
 
-See [settling time](#settling-time).
+The settling time is the time at which the signal remains within $\pm$ 2% of the final value.
 
 $$T_s = \frac{4}{\zeta \omega_n}$$
 
@@ -219,7 +227,30 @@ A system is said to be stable if all bounded inputs yield a bounded output.
 
 For an LTI system, it is stable if the natural response $\rightarrow$ 0 as $t \rightarrow \infty$.
 
-Poles that appear in the left hand, real plane are considered stable because they converge to zero, whereas those that lie on the left hand, complex plane often explode and diverge.
+Poles that appear in the left hand (of the $j\omega$ axis), real plane are considered stable because they converge and decay, whereas those that lie on the right hand, complex plane explode and diverge.
+
+At least one pole on the right hand plane is enough to throw the system into instability since it diverges.
+
+## Routh-Hurwitz Criterion
+
+Given a closed loop transfer function:
+
+$$\frac{N(s)}{a_n s^n + a_{n-1} s^{n-1} + a_{n-2} s^{n-2} + a_{n-3} s^{n-3} + \dots + a_1 s + a_0}$$
+
+The corresponding Routh table is:
+
+||||||
+|-|-|-|-|-|
+| $s^{n} \text{}$ | $a_n$ | $a_{n-2} \text{}$ | $\dots$ | $a_1$ | $0$ |
+| $s^{n-1} \text{}$ | $a_{n-1} \text{}$ | $a_{n-3} \text{}$ | $\dots$ | $a_0$ | $0$ |
+| $s^{n-2} \text{}$ | $-\frac{1}{a_{n-1}} \begin{vmatrix} a_n & a_{n-2} \\ a_{n-1} & a_{n-3} \end{vmatrix} \text{}$ | $-\frac{1}{a_{n-1}} \begin{vmatrix} a_{n-2} & a_{n-4} \\ a_{n-3} & a_{n-5} \end{vmatrix} \text{}$
+| $\vdots$ | $\vdots$ | $\vdots$ | 
+| $s^1$ |
+| $s^0$ |
+
+From this table, we can deduce that the number of roots of the polynomial that are in the right half plane is equal to the number of sign changes in the first column.
+
+In other words, the first column must contain all positive values in order for the system to be stable.
 
 ## Relative Stability
 
@@ -237,7 +268,7 @@ $$\frac{E(s)}{R(s)} = \frac{1}{1+G(s)} \implies E(s) = \frac{R(s)}{1+G(s)}$$
 
 The steady state error for the above system is:
 
-$$e(\infty) = \lim_{t \rightarrow 0} e(t) = \lim_{s \rightarrow 0} E(s)$$
+$$e(\infty) = \lim_{t \rightarrow \infty} e(t) = \lim_{s \rightarrow 0} s E(s)$$
 
 Assuming $\frac{1}{1+G(s)}$ is stable:
 
@@ -247,4 +278,160 @@ $$e(\infty) = \lim_{s \rightarrow 0} s \frac{R(s)}{1+G(s)}$$
 
 A system $G(s)$ is said to be type $n$ if there are $n$ poles at the origin.
 
-$$G(s) = \frac{N(s)}{s^n Q(s)}$$
+$$G(s) = \frac{N(s)}{s^n Q(s)}, n \in \mathbb Z$$
+
+## Error Constants
+
+### Position Error Constant 
+
+$$K_p = \lim_{s \to 0} G(s) = \begin{cases}
+G(0) & n = 0 \\
+\infty & n \geq 1
+\end{cases}$$
+
+For a step input $\frac{1}{s}$:
+
+$$e(\infty) = \frac{1}{1+K_p}$$
+
+### Velocity Error Constant
+
+$$K_v = \lim_{s \to 0} s G(s) = \begin{cases}
+0 & n = 0 \\
+\frac{N(0)}{Q(0)} & n = 1 \\
+\infty & n \geq 2
+\end{cases}$$
+
+For a ramp input $\frac{1}{s^2}$:
+
+$$e(\infty) = \frac{1}{K_v}$$
+
+### Acceleration Error Constant
+
+$$K_a = \lim_{s \to 0} s^2 G(s) = \begin{cases}
+0 & n = 0, 1 \\
+\frac{N(0)}{Q(0)} & n = 2 \\
+\infty & n \geq 3
+\end{cases}$$
+
+For a parabolic input $\frac{1}{s^3}$:
+
+$$e(\infty) = \frac{1}{K_a}$$
+
+## Root Locus
+
+Root Locus is a tool used to analyze a the effect of a varied gain factor $\forall K \in [0, \infty)$ on the transient response of a closed loop feedback control system. In other words, it shows the paths of the closed loop poles as the gain varies.
+
+We can see the various pole locations in the complex plane. Poles on the LHP correspond to exponential decay, while those on the RHP correspond the exponential growth. Additionally, those that have a complex component to it come in pairs. On the imaginary axis, the poles correspond to a higher frequency of the wave. A combination of both the real and imaginary components corresponds to exponential and sinusoidal motion.
+
+Therefore, we can determine values of K such that our system is stable using this analysis tool.
+
+Only the poles dictate the natural response of the system.
+
+### Properties of Negaitve Feedback System
+
+For a closed loop transfer function of the form
+
+$$T(s) = \frac{Y(s)}{R(s)} = \frac{KG(s)}{1+KG(s)H(s)}$$
+
+#### Pole Locations
+
+The pole locations are given by setting the characteristic polynomial of the denominator to zero
+
+$$KG(s)H(s) = 0 \implies KG(s)H(s)=-1=1 \angle 180 ^{\circ} (2k+1), k\in\mathbb{Z}$$
+
+#### Magnitude Criterion
+
+The magnitude criterion is given by:
+
+$$|KG(s)H(s)| = 1$$
+
+For any point $s$ on the root locus, this equality must be satisfied. Thus, the root locus exists to the left of an odd number of real-axis, finite open-loop poles/zeros.
+
+#### Angle Criterion
+
+The angle criterion is given by:
+
+$$\angle KG(s)H(s) = (2k+1) 180 ^{\circ}$$
+
+$$\sum_{i=1}^n \angle (s+p_i) + \sum_{i=1}^m \angle (s+z_i) = \pm 180 ^\circ (2k+1)$$
+
+For any point $s$ on the root locus, this equality must be satisfied.
+
+#### Gain Factor
+
+The gain factor is given by:
+
+$$K=\frac{1}{|G(s)H(s)|}$$
+
+## Poles and Zeros
+
+We take the open loop transfer function, $\displaystyle G(s)H(s) = \frac{K (s+z_1) \cdots (s+z_m)}{(s+p_1) \cdots (s+p_n)}$, and take the open loop poles and zeros and plot them on the complex plane.
+
+## Asymptotes
+
+These equations define the behavior of the root locus at infinity.
+
+### Real Axis Intercept / Point of Intersection
+
+$\sigma_a$ is the point on the real axis at which the asymptotes depart.
+
+$$\sigma_a = \frac{\sum_i p_i - \sum_i -z_i}{n-m}$$
+
+### Real Axis Angle
+
+The real axis angle is the angle from the real axis intercept that the intercepts converge at.
+
+$$\angle s+\alpha = \frac{\pm 180 ^\circ (2k+1)}{n - m}$$
+
+## Real Axis Breakway and Break-in Points
+
+Breakaway and break-in points are where the root locus departs from the real axis. 
+
+The locus leaves the axis at $-\sigma_1$ and enters back at $\sigma_2$.
+
+The branches of the root locus form an angle of $180 ^\circ / n$, $n$ is the number of closed loop poles departing from or arriving at a breakaway/in point.
+
+The breakway/in points can be solved via the following methods:
+
+### Without Differentiation
+
+$$\sum_{i=1}^m \frac{1}{\sigma+z_i} = \sum_{i=1}^n \frac{1}{\sigma+p_i}$$
+
+and solve for the roots.
+
+### With Differentiation
+
+$$\frac{dN}{d\sigma}D-N\frac{dD}{d\sigma} = 0$$
+
+and solve for the roots.
+
+## $j\omega$ Axis Crossing
+
+Solve for the roots of the following:
+
+$$\sum_{i=1}^n (s+p_i) + K \sum_{i=1}^m (s+z_i) \big |_{s=j\omega} = 0$$
+
+## Angle of Departure
+
+The angle of departure is the angle at which the root locus departs from a point. Use the angle criterion and solve for the angle that you are looking for.
+
+$$\sum_{i=1}^n \angle (s+p_i) + \sum_{i=1}^m \angle (s+z_i) = \pm 180 ^\circ (2k+1)$$
+
+
+## Properties of Positive Feedback System
+
+Given a positive feedback system
+
+$$T(s) = \frac{K G(s)}{1-KG(s)H(s)}$$
+
+### Magnitude and Angle Criteron
+
+$$KG(s)H(s) = 1 = 1 \angle k360 ^\circ$$
+
+the root locus exists to the left of an even number of real-axis, finite open-loop poles/zeros.
+
+### Asymptotes
+
+$$\sigma_a = \frac{\sum_i p_i - \sum_i -z_i}{n-m}$$
+
+$$\angle s+\alpha = \frac{\pm 360 ^\circ (2k+1)}{n - m}$$

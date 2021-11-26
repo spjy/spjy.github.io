@@ -3,6 +3,10 @@ header: Algorithms
 description: The data playground.
 ---
 
+# Dynamic Programming
+
+
+
 # Algorithm Analysis
 
 ## Loop Invariants

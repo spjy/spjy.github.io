@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[31],{504:function(n,e,o){"use strict";o.r(e),e.default="---\nheader: Finance \ndescription: Industry of money.\n---\n\n## Compound Interest\n\n"}}]);

@@ -53,7 +53,7 @@ $$\left\{ x \in \mathbb{R} \mid 10 \le x \le 15 \right\} = \left\{10, 11, 12, 13
 
 ### Subset
 
-Let $A$ and $B$ be sets. If $A$ is a subset of $B$, or $A \subseteq B$, then each element of $A$ is also an element of $B$.
+Let $A$ and $B$ be sets. If $A$ is a subset of $B$, or $A \subseteq B$, then each element of $A$ is also an element of $B$. In other words, $A$ is contained in $B$ and $B$ contains $A$.
 
 | Notation         | Translation |
 ------------------ | ----------- |
@@ -108,7 +108,13 @@ $$A \times B = \left\{ (a, b) \mid a \in A, b \in B \right\}$$
 
 Let $A = \left\{ 1, 2 \right\}$ and $\left\{ 3, 4 \right\}$. The Cartesian product of $A$ and $B$ is:
 
-$$A \times B = \left\{ (1, 2), (1, 4), (2, 3), (2, 4) \right\} \text{}$$
+$$A \times B = \left\{ (1, 3), (1, 4), (2, 3), (2, 4) \right\} \text{}$$
+
+#### Cartesian Product and Cartesian Plane
+
+The points on the Cartesian Plane can be expressed in the following way:
+
+$$\bold R \times \bold R = \{ (x,y) \mid x \in \mathbb R, y \in \mathbb R \}$$
 
 ### Relationships
 
@@ -119,10 +125,15 @@ A relationship is the connection between two different things.
 
 Now we can say:
 
-- An ordered pair $(x, y) \in A \times B$, we can state $x$ is related to $y$ by $R$, or $x$ $R$ $y$ iff $(x, y) \in R$.
-- $A$ is the domain of $R$ and $B$ is the co-domain.
+- Given an ordered pair $(x, y) \in A \times B$, we can state $x$ is related to $y$ by $R$, or $x$ $R$ $y$ iff $(x, y) \in R$.
+- $A$ is the domain of $R$
+- $B$ is the co-domain.
 - $x$ $R$ $y$ means $(x,y) \in R$.
 - $x$ $\not{R}$ $y$ means $(x,y) \not\in R$.
+
+In other words, we can relate the elements of the ordered pair $(x,y)$ of the cartesian product of $A$ and $B$ ($A \times B$) by imposing a constraint on a third relational set and seeing if the pair is contained in $R$.
+
+This lays the framework for function notation.
 
 ### Functions
 
@@ -131,7 +142,7 @@ A function $F$ from a set $A$ to set $B$ is the relationship between the domain 
 - $\forall x \in A, \exists y \in B \mid (x,y) \in F$
 - $\forall x \in A$ and $y,z \in B$, if $(x, y) \in F$ and $(x,z) \in F \implies y=z$
 
-In other words, for each $x$ in the domain, there exists a value for $x$ in the co-domain. Additionally, each element $x$ in the domain may map to exactly one value $y$ in the co-domain.
+In other words, for each $x$ in the domain, there exists a value $y$ for $x$ in the co-domain. This is expressed as an ordered pair that is in $F$, $(x,y) \in F$. Additionally, each element $x$ in the domain may map to only one value $y$ in the co-domain (each ordered pair in $F$ is distinct).
 
 #### Function Notation
 
@@ -140,6 +151,12 @@ If $A$ and $B$ are sets and $F$ is a function from $A$ to $B$, then given any el
 #### Function Mapping Notation
 
 Let $A$ and $B$ be sets and $f$ be a function. If $x \in A$ and $y \in B$, a function $f: A \rightarrow B$ is defined by $f: x \mapsto y$ means $f(x) = y$, the domain is defined on the set $A$ and the co-domain is defined on the set $B$.
+
+#### Function Equality
+
+Let $f$ and $g$ be functions.
+
+$f=g$ iff $f(x) = g(x) \forall x \in A$.
 
 # Logic and Statements
 
