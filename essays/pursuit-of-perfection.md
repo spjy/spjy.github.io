@@ -2,7 +2,7 @@
 title: Pursuit of Perfection
 image: /images/bonsai.jpg
 date: 2020-01-20
-description: I am like a bonsai tree, impeccably groomed, meticulously trimmed, and delicately watered.
+description: A bonsai tree is the epitome of perfection.
 tags: Creative, Metaphorical
 github:
 link:

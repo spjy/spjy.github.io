@@ -3,7 +3,7 @@ title: Legislative Tracking System
 image: /images/lts-doe.jpg
 date: 2020-09-01
 description: State legislative bill tracker and testimony manager.
-tags: TypeScript, Angular 14, AdonisJS, Figma
+tags: TypeScript, Angular 14, AdonisJS
 github: https://github.com/HACC2022/Monsoon-Rain
 link: https://devpost.com/software/monsoon-rain
 ---
