@@ -2,7 +2,7 @@
 title: Quality Questions
 image: /images/thinking.jpg
 date: 2020-01-03
-description: Do you find people not answering your questions? You may be asking question the incorrect way. Let's see how we can fix that.
+description: Are people not answering your questions? You may be asking it in the wrong way.
 tags: Questions, Answers, Stack Overflow
 github:
 link:

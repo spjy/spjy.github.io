@@ -74,7 +74,7 @@ $$h=[n] = \text{sinc}\bigg( \frac{n}{U} \bigg)$$
 
 $$Y(e^{j\omega}) = H(e^{j\omega}) X(e^{j\omega})$$
 
-## Decmation
+## Decimation
 
 Image decimation is the application of a filter, then the deletion of data points between the original ones. Alternatively, it is the extraction of only certain samples of the image.
 

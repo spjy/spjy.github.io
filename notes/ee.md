@@ -29,17 +29,17 @@ $$q = \int_{t_0}^t i \text{ } dt$$
 
 ## Types of Currents
 
-| Current Type        | Abbreviation | Description                                                     |
-| ------------------- | ------------ | --------------------------------------------------------------- |
-| Direct Current      | DC           | Current that flows in only one direction.                        |
-| Alternating Current | AC           | Current that changes direction constantly with respect to time. |
+| Current Type        | Abbreviation | Description                                          |
+| ------------------- | ------------ | ---------------------------------------------------- |
+| Direct Current      | DC           | Current that flows in only one direction.             |
+| Alternating Current | AC           | Current that changes direction with respect to time. |
 
 # Voltage (v)
 | Variable | Unit     | SI Unit                               |
 | -------- | -------- | ------------------------------------- | 
 | v        | volt (V) | $\displaystyle \frac{\text{newton} \cdot \text{meter}}{\text{second}} \text{}$ |
 
-Voltage is the potential difference between two points and is represented as the variable $v$. In other words, it is the energy required to move from one point $a$ to another point $b$. Its unit of measurement is denoted as volts (V). A volt is equivalent to a $\text{joule / coulomb}$ or a $\text{newton} \cdot \text{meter / coulomb}$. Voltage is denoted as change in work over the change in charge:
+Voltage is the potential difference between two points and is represented as the variable $v$. In other words, it is the energy required to move a charge from one point $a$ to another point $b$. Its unit of measurement is denoted as volts (V). A volt is equivalent to a $\text{joule / coulomb}$ or a $\text{newton} \cdot \text{meter / coulomb}$. Voltage is denoted as change in work over the change in charge:
 
 $$v_{ab} = \frac{dw}{dq}$$
 
@@ -72,10 +72,10 @@ An electric circuit is a collection of connected elements.
 ## Types of Circuit Elements
 
 #### Passive Circuit Element
-A passive circuit element is not capable of generating electricity.
+A passive circuit element is not capable of generating energy.
 
 #### Active Circuit Element
-A passive circuit element is capable of generating electricity.
+A passive circuit element is capable of generating energy.
 
 ## Types of Sources
 

@@ -3,28 +3,21 @@ email: spjy@hawaii.edu
 github: http://github.com/spjy
 skills:
   software:
-    - HTML
-    - CSS
-    - JavaScript
-    - C
-    - C++
-    - Node.js
+    - HTML/CSS
+    - TypeScript
     - Python
-    - Golang
   engineering:
-    - SystemVerilog
-    - LogicWorks
     - Oscilloscope
-    - Soldering
   frameworks & tools:
     - React
     - Redux
+    - RxJS
     - Vue
     - Git
-    - Unix
+    - Linux
     - Docker
     - REST
-    - Jira
+    - JIRA
   coursework:
     - Programming in C/C++
     - Digital Design (VHDL)

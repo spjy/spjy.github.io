@@ -3,7 +3,7 @@ title: COSMOS Web
 image: /images/cosmos.png
 date: 2020-01-03
 description: A web application that allows control of satellites and visualization of data.
-tags: JavaScript, C, C++, Unix
+tags: JavaScript, C, C++, Linux
 github: https://github.com/spjy/cosmos-web
 link:
 ---
