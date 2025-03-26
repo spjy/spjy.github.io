@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[37],{519:function(n,r,e){"use strict";e.r(r),r.default="---\r\nheader: Markdown\r\ndescription: Convenient markup langauge.\r\n---\r\n\r\n\r\n"}}]);

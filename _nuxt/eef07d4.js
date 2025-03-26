@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[40],{522:function(n,e,r){"use strict";r.r(e),e.default="---\r\nheader: Machine Learning\r\ndescription: Teaching machines.\r\n---\r\n\r\n\r\n"}}]);
