@@ -311,7 +311,7 @@ $\forall u,v \in V, 0 \leq f(u,v) \leq c(u,v)$
 
 $\forall u \in V - {s, t}, \displaystyle \sum_{v \in V} f(u, v) = \sum _{v \in V} f(u,v)$
 
-If $(u,v) \nin E$, the flow $f(u,v) = 0$
+If $(u,v) \not\in E$, the flow $f(u,v) = 0$
 
 # NP-completeness
 
@@ -368,5 +368,3 @@ An algorithm is NP-complete if we have a known NP-hard algorithm, and we have an
 $$NPC = \{ NP \} \cap \{ NPH \}$$
 
 # Graphs
-
-

@@ -311,7 +311,7 @@ $$f = \frac{1}{T}$$
 
 The phase describes the shift in the wave along the $x$ axis.
 
-Given two sinusoids such that $phi \dne 0$,
+Given two sinusoids such that $phi \neq 0$,
 
 $$v_1(t) = V_m \sin{\omega t}$$
 $$v_2(t) = V_m \sin{(\omega t + \phi)}$$
@@ -342,7 +342,7 @@ These forms are possible in part by Euler's identity.
 
 $$e^{\pm j\phi} = \cos{\phi} \pm j \sin{\phi}$$
 $$\cos\phi = \mathbb{R}e \{e^{j \phi}\}$$
-$$\sin\phi = \mathbb{I}m \{e^{j \phi)\}
+$$\sin\phi = \mathbb{I}m \{e^{j \phi}\}$$
 
 #### Rectangular Form
 
