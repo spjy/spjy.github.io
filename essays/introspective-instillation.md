@@ -12,14 +12,14 @@ link:
 
 Despite the implication of the name, software engineering is not just about creating software. Software engineering is about the encompassing process, from start to finish, of how to create the software, including managing projects, setting up development environments, enforcing coding standards, and weighing certain design philosophies. This fact is something that I only recently instilled after introspection. Although I realized that software engineering encompasses more than solving problems through software, I am familiar with all of the concepts presented throughout ICS 314 from my experience personally and professionally.
 
-# My experience personally
+## My experience personally
 
 Personally, I have dabbled in web development in my spare time, and from it have developed a taste for my own coding development environment using Visual Studio Code, a knowledge of coding standards (enforcing of strict code syntax) using linters, and a familiarity of various methods of implementing and organizing code such as the [model-view-controller model](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller). All of these aspects are familiar to me and I feel that I have a comfortable grasp of them.
 
-# My experience professionally
+## My experience professionally
 
 Professionally, I have experience with agile project management and open source software development at the Hawaii Space Flight laboratory. For agile, it is useful to organize tasks into a central platform; it increases organization and productivity. I endured a time without it, and the difference is like night and day. Additionally, I maintain open source software at my job, and it is surprisingly different to develop for compared to private code. I notice that I need to maintain the documentation and test for bugs much more frequently as it is code that many people use. 
 
-# Importance of these software engineering ideas
+## Importance of these software engineering ideas
 
 In the end, software engineering includes all aspects that are required to successfully deploy a piece of software, from the type of editor you use, the way you manage the project, the frameworks you use, and the designs you decide to use. As a result, it is imperative to be exposed to all of these facets to become a superb software engineer.
